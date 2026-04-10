@@ -31,15 +31,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Proyecto</th>
-                <th>Cliente</th>
-                <th>Presupuesto</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha Límite</th>
-                <th>Prioridad</th>
-                <th>Estado</th>
-                <th class="text-center"></th>
+                <th class="text-center" style="background-position: center;">ID</th>
+                <th class="text-center" style="background-position: center;">Proyecto</th>
+                <th class="text-center" style="background-position: center;">Cliente</th>
+                <th class="text-center" style="background-position: center;">Presupuesto</th>
+                <th class="text-center" style="background-position: center;">Fecha de Inicio</th>
+                <th class="text-center" style="background-position: center;">Fecha Límite</th>
+                <th class="text-center" style="background-position: center;">Prioridad</th>
+                <th class="text-center" style="background-position: center;">Estado</th>
+                <th class="text-center" style="background-position: center;"></th>
             </tr>
         </thead>
         <tbody>
@@ -62,21 +62,21 @@
                 <td>${{ proyecto.presupuesto|floatformat:"0"|intcomma }} COP</td>
                 <td>{{ proyecto.fecha_inicio|date:"d/m/Y" }}</td>
                 <td>{{ proyecto.fecha_limite|date:"d/m/Y" }}</td>
-                <td>
+                <td class="text-center">
                     {% if proyecto.prioridad == 'Alta' %}<span class="badge"
-                        style="background-color: #023e8a; color: white;">Alta</span>
+                        style="background-color: #023e8a; color: white">Alta</span>
                     {% elif proyecto.prioridad == 'Media' %}<span class="badge"
                         style="background-color: var(--primary-container); color: white;">Media</span>
                     {% else %}<span class="badge"
                         style="background-color: var(--surf-container-highest); color: var(--on-surf);">Baja</span>{% endif %}
                 </td>
-                <td>
+                <td class="text-center">
                     {% if proyecto.estado == 'Completado' %}<span class="badge"
-                        style="background-color: var(--primary-container); color: white;">Completado</span>
+                        style="background-color: var(--primary-container); color: white">Completado</span>
                     {% elif proyecto.estado == 'En Progreso' %}<span class="badge"
-                        style="background-color: var(--primary); color: white;">En Progreso</span>
+                        style="background-color: var(--primary); color: white">En Progreso</span>
                     {% else %}<span class="badge"
-                        style="background-color: var(--surf-container-highest); color: var(--on-surf);">Pendiente</span>{% endif %}
+                        style="background-color: var(--surf-container-highest); color: var(--on-surf)">Pendiente</span>{% endif %}
                 </td>
                 <td>
                     <div class="d-flex justify-content-center gap-2 text-nowrap">
@@ -107,12 +107,10 @@
                             </p>
                             <hr style="border-color: var(--surf-container-highest);">
                             <p><strong>Descripción:</strong></p>
-                            <p class="text-muted" style="white-space: pre-wrap; font-family: 'Inter', sans-serif;">{{
-                                proyecto.descripcion }}</p>
+                            <p class="text-muted" style="white-space: pre-wrap; font-family: 'Inter', sans-serif;">{{ proyecto.descripcion }}</p>
                             {% if proyecto.dias_restantes <= 5 and proyecto.dias_restantes > 0 and proyecto.estado != 'Completado' %}
                                 <div class="alert alert-warning mt-3 border-0" style="border-radius: 8px;">
-                                    <strong>¡Próximo a vencer!</strong> Faltan {{ proyecto.dias_restantes }} días. Te
-                                    sugerimos acelerar las entregas.
+                                    <strong>¡Próximo a vencer!</strong> Faltan {{ proyecto.dias_restantes }} días. Te sugerimos acelerar las entregas.
                                 </div>
                                 {% elif proyecto.dias_restantes <= 0 and proyecto.estado != 'Completado' %} <div
                                     class="alert alert-danger mt-3 border-0" style="border-radius: 8px;">
